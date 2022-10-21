@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="script" href="script.css">
+    <title>Registration Form </title>
+</head>
+
+<body>
+<form action="register" method="post">
+<section class="regestration">
+    <div>
+        <h2>Registration Form</h2>
+            <label for="label" class="lable-text">Teacher Name</label>
+            <input type="text" placeholder="Enter Teacher Name Here" name="teacherName" class="input-box"><br>
+
+            <label for="label" class="lable-text">Title</label>
+            <input type="text" placeholder="Enter Title Here" name="title" class="input-box"><br>
+
+            <label for="label" class="lable-text">Branch</label>
+            <select name="branch"  class="dropdown-box">
+                <option value="CSE" selected>CSE</option>
+                <option value="IT">IT</option>
+                <option value="ECE">ECE</option>
+                <option value="ME">ME</option>
+            </select><br>
+
+            <label for="label" class="lable-text">Semester</label>
+            <select name="semester"  class="dropdown-box">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select><br>
+
+            <label for="label" class="lable-text">Subject code</label>
+            <input type="text" placeholder="Enter Here" name="subjectcode" class="input-box"><br>
+
+            <label for="label" class="lable-text">Description</label>
+            <textarea placeholder="Enter Description Here" name="description" rows="4" ></textarea><br>
+
+            <input type="submit" value="Submit" class="submit-form">
+        </div>
+    </section>
+</form>
+
+</body>
+
+</html>
