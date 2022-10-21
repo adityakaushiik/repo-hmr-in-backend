@@ -7,7 +7,7 @@ public class User {
     private String semester;
     private String subjectCode;
     private String description;
-    private boolean isAuthor;
+    private boolean isAuthor;       // to be used
 
     public User() {
     }

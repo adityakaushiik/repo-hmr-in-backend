@@ -10,17 +10,15 @@ import org.springframework.data.cassandra.core.mapping.Table;
 @Table("author_by_id")
 public class Author {
     @Id
-    @PrimaryKeyColumn(
-            name = "author_id",
-            ordinal = 0,
-            type = PrimaryKeyType.PARTITIONED
-    )
+    @PrimaryKeyColumn(name = "author_id", ordinal = 0, type = PrimaryKeyType.PARTITIONED)
     private String id;
     @Column("author_name")
-    @CassandraType(
-            type = CassandraType.Name.TEXT
-    )
+    @CassandraType(type = CassandraType.Name.TEXT)
     private String name;
+
+//    @Column("author_contact")                         // either email or phone number
+//    @CassandraType(type = CassandraType.Name.TEXT)
+//    private String email;
 
     public Author() {
     }

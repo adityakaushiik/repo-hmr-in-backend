@@ -1,6 +1,7 @@
 package in.hmr.repo.repohmrin.book;
 
 import java.time.LocalDate;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
 import org.springframework.data.cassandra.core.mapping.CassandraType;
@@ -12,44 +13,29 @@ import org.springframework.data.cassandra.core.mapping.CassandraType.Name;
 @Table("book_by_id")
 public class Book {
     @Id
-    @PrimaryKeyColumn(
-            name = "book_id",
-            ordinal = 0,
-            type = PrimaryKeyType.PARTITIONED
-    )
+    @PrimaryKeyColumn(name = "book_id", ordinal = 0, type = PrimaryKeyType.PARTITIONED)
     private String id;
     @Column("book_name")
-    @CassandraType(
-            type = Name.TEXT
-    )
+    @CassandraType(type = Name.TEXT)
     private String title;
     @Column("book_description")
-    @CassandraType(
-            type = Name.TEXT
-    )
+    @CassandraType(type = Name.TEXT)
     private String description;
     @Column("published_date")
-    @CassandraType(
-            type = Name.DATE
-    )
+    @CassandraType(type = Name.DATE)
     private LocalDate publishedDate;
     @Column("author_names")
-    @CassandraType(
-            type = Name.TEXT,
-            typeArguments = {Name.TEXT}
-    )
+    @CassandraType(type = Name.TEXT, typeArguments = {Name.TEXT})
     private String authorNames;
     @Column("author_ids")
-    @CassandraType(
-            type = Name.TEXT,
-            typeArguments = {Name.TEXT}
-    )
+    @CassandraType(type = Name.TEXT, typeArguments = {Name.TEXT})
     private String authorID;
     @Column("book_sem")
-    @CassandraType(
-            type = Name.INT
-    )
+    @CassandraType(type = Name.INT)
     private int semester;
+    @Column("book_branch")
+    @CassandraType(type = Name.TEXT)
+    private String branch;
 
     public Book() {
     }
@@ -108,5 +94,13 @@ public class Book {
 
     public void setSemester(int semester) {
         this.semester = semester;
+    }
+
+    public String getBranch() {
+        return branch;
+    }
+
+    public void setBranch(String branch) {
+        this.branch = branch;
     }
 }
