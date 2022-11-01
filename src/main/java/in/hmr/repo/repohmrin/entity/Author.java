@@ -1,4 +1,4 @@
-package in.hmr.repo.repohmrin.author;
+package in.hmr.repo.repohmrin.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.cassandra.core.cql.PrimaryKeyType;

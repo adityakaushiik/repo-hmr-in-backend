@@ -1,4 +1,4 @@
-package in.hmr.repo.repohmrin.book;
+package in.hmr.repo.repohmrin.entity;
 
 import java.time.LocalDate;
 
@@ -36,9 +36,13 @@ public class Book {
     @Column("book_branch")
     @CassandraType(type = Name.TEXT)
     private String branch;
+    @Column("cover_id")
+    @CassandraType(type = Name.TEXT)
+    private String coverId;
 
-    public Book() {
-    }
+    @Column("orignal_name")
+    @CassandraType(type = Name.TEXT)
+    private String orignalName;
 
     public String getId() {
         return this.id;
@@ -102,5 +106,20 @@ public class Book {
 
     public void setBranch(String branch) {
         this.branch = branch;
+    }
+
+    public String getCoverId() {
+        return coverId;
+    }
+
+    public void setCoverId(String coverId) {
+        this.coverId = coverId;
+    }
+
+    public String getOrignalName() {
+        return orignalName;
+    }
+    public void setOrignalName(String orignalName) {
+        this.orignalName = orignalName;
     }
 }
