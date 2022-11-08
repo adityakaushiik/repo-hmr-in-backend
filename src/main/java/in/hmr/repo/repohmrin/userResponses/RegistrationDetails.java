@@ -1,14 +1,15 @@
-package in.hmr.repo.repohmrin.entity;
+package in.hmr.repo.repohmrin.userResponses;
 
 import org.springframework.web.multipart.MultipartFile;
 
-public class UserResponse {
+public class RegistrationDetails {
     private String teacherName;
     private String title;
     private String branch;
     private String semester;
-    private String subjectCode;
+    private String scode;
     private String description;
+    private String type;
     private boolean isAuthor;       // to be used
     private MultipartFile image;
     private MultipartFile pdf;
@@ -45,13 +46,6 @@ public class UserResponse {
         this.semester = semester;
     }
 
-    public String getSubjectCode() {
-        return subjectCode;
-    }
-
-    public void setSubjectCode(String subjectCode) {
-        this.subjectCode = subjectCode;
-    }
 
     public String getDescription() {
         return description;
@@ -83,5 +77,26 @@ public class UserResponse {
 
     public void setPdf(MultipartFile pdf) {
         this.pdf = pdf;
+    }
+
+    public String getScode() {
+        return scode;
+    }
+
+    public void setScode(String scode) {
+        this.scode = scode;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "UserResponse{" + "teacherName='" + teacherName + '\'' + ", title='" + title + '\'' + ", branch='" + branch + '\'' + ", semester='" + semester + '\'' + ", scode='" + scode + '\'' + ", description='" + description + '\'' + ", isAuthor=" + isAuthor + ", image=" + image + ", pdf=" + pdf + '}';
     }
 }

@@ -1,4 +1,4 @@
-package in.hmr.repo.repohmrin.entity;
+package in.hmr.repo.repohmrin.entities;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
@@ -15,13 +15,6 @@ public class Author {
     @Column("author_name")
     @CassandraType(type = CassandraType.Name.TEXT)
     private String name;
-
-//    @Column("author_contact")                         // either email or phone number
-//    @CassandraType(type = CassandraType.Name.TEXT)
-//    private String email;
-
-    public Author() {
-    }
 
     public String getId() {
         return this.id;

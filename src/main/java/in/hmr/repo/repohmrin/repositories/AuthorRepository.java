@@ -1,6 +1,6 @@
-package in.hmr.repo.repohmrin.repository;
+package in.hmr.repo.repohmrin.repositories;
 
-import in.hmr.repo.repohmrin.entity.Author;
+import in.hmr.repo.repohmrin.entities.Author;
 import org.springframework.data.cassandra.repository.CassandraRepository;
 import org.springframework.stereotype.Repository;
 

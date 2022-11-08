@@ -1,4 +1,4 @@
-package in.hmr.repo.repohmrin.entity;
+package in.hmr.repo.repohmrin.entities;
 
 import java.time.LocalDate;
 
@@ -36,16 +36,31 @@ public class Book {
     @Column("book_branch")
     @CassandraType(type = Name.TEXT)
     private String branch;
-    @Column("cover_id")
+    @Column("book_type")
     @CassandraType(type = Name.TEXT)
-    private String coverId;
+    private String type;
+    @Column("subject_code")
+    @CassandraType(type = Name.TEXT)
+    private String subjectCode;
+    @Column("pdf_name")
+    @CassandraType(type = CassandraType.Name.TEXT)
+    private String pdfOriginalName;
+    @Column("pdf_path")
+    @CassandraType(type = CassandraType.Name.TEXT)
+    private String pdfFilePath;
+    @Column("img_name")
+    @CassandraType(type = CassandraType.Name.TEXT)
+    private String imgName;
+    @Column("img_type")
+    @CassandraType(type = CassandraType.Name.TEXT)
+    private String imgType;
+    @Column("img_path")
+    @CassandraType(type = CassandraType.Name.TEXT)
+    private String imgFilePath;
 
-    @Column("orignal_name")
-    @CassandraType(type = Name.TEXT)
-    private String orignalName;
 
     public String getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(String id) {
@@ -53,7 +68,7 @@ public class Book {
     }
 
     public String getTitle() {
-        return this.title;
+        return title;
     }
 
     public void setTitle(String title) {
@@ -61,7 +76,7 @@ public class Book {
     }
 
     public String getDescription() {
-        return this.description;
+        return description;
     }
 
     public void setDescription(String description) {
@@ -69,7 +84,7 @@ public class Book {
     }
 
     public LocalDate getPublishedDate() {
-        return this.publishedDate;
+        return publishedDate;
     }
 
     public void setPublishedDate(LocalDate publishedDate) {
@@ -77,7 +92,7 @@ public class Book {
     }
 
     public String getAuthorNames() {
-        return this.authorNames;
+        return authorNames;
     }
 
     public void setAuthorNames(String authorNames) {
@@ -85,7 +100,7 @@ public class Book {
     }
 
     public String getAuthorID() {
-        return this.authorID;
+        return authorID;
     }
 
     public void setAuthorID(String authorID) {
@@ -93,7 +108,7 @@ public class Book {
     }
 
     public int getSemester() {
-        return this.semester;
+        return semester;
     }
 
     public void setSemester(int semester) {
@@ -108,18 +123,59 @@ public class Book {
         this.branch = branch;
     }
 
-    public String getCoverId() {
-        return coverId;
+    public String getType() {
+        return type;
     }
 
-    public void setCoverId(String coverId) {
-        this.coverId = coverId;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public String getOrignalName() {
-        return orignalName;
+    public String getSubjectCode() {
+        return subjectCode;
     }
-    public void setOrignalName(String orignalName) {
-        this.orignalName = orignalName;
+
+    public void setSubjectCode(String subjectCode) {
+        this.subjectCode = subjectCode;
+    }
+
+    public String getPdfOriginalName() {
+        return pdfOriginalName;
+    }
+
+    public void setPdfOriginalName(String pdfOriginalName) {
+        this.pdfOriginalName = pdfOriginalName;
+    }
+
+    public String getPdfFilePath() {
+        return pdfFilePath;
+    }
+
+    public void setPdfFilePath(String pdfFilePath) {
+        this.pdfFilePath = pdfFilePath;
+    }
+
+    public String getImgName() {
+        return imgName;
+    }
+
+    public void setImgName(String imgName) {
+        this.imgName = imgName;
+    }
+
+    public String getImgType() {
+        return imgType;
+    }
+
+    public void setImgType(String imgType) {
+        this.imgType = imgType;
+    }
+
+    public String getImgFilePath() {
+        return imgFilePath;
+    }
+
+    public void setImgFilePath(String imgFilePath) {
+        this.imgFilePath = imgFilePath;
     }
 }

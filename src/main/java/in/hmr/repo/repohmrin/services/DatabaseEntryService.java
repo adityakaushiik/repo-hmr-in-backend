@@ -1,13 +1,14 @@
 package in.hmr.repo.repohmrin.services;
 
-import in.hmr.repo.repohmrin.entity.Author;
-import in.hmr.repo.repohmrin.repository.AuthorRepository;
-import in.hmr.repo.repohmrin.entity.Book;
-import in.hmr.repo.repohmrin.repository.BookRepository;
-import in.hmr.repo.repohmrin.entity.UserResponse;
+import in.hmr.repo.repohmrin.entities.Author;
+import in.hmr.repo.repohmrin.entities.Book;
+import in.hmr.repo.repohmrin.repositories.AuthorRepository;
+import in.hmr.repo.repohmrin.repositories.BookRepository;
+import in.hmr.repo.repohmrin.userResponses.RegistrationDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Random;
@@ -15,45 +16,55 @@ import java.util.Random;
 @Service
 public class DatabaseEntryService {
     @Autowired
-    AuthorRepository authorRepository;
+    private AuthorRepository authorRepository;
     @Autowired
-    BookRepository bookRepository;
-    @Autowired
-    ImageStorageService imageStorageService;
+    private BookRepository bookRepository;
+    private final String PDF_FOLDER_PATH = "E:/repo.hmr_fileData/pdf/";
+    private final String IMG_FOLDER_PATH = "E:/repo.hmr_fileData/img/";
     private final Random random = new Random();
 
+    public void addEntry(RegistrationDetails details) throws IOException {
 
-    public void addEntry(UserResponse userResponse) throws IOException {
+        String pdfFilePath = PDF_FOLDER_PATH +
+                details.getPdf().getOriginalFilename();
+        String imgFilePath = IMG_FOLDER_PATH +
+                details.getImage().getOriginalFilename();
+
+        details.getPdf().transferTo(new File(pdfFilePath));
+        details.getImage().transferTo(new File(imgFilePath));
+
         Author author = new Author();
+        String authorId = teacherUniqueId(details.getTeacherName());
+        author.setId(authorId);
+        author.setName(details.getTeacherName());
+        this.authorRepository.save(author);
+
         Book book = new Book();
-
-        String imgId = imageStorageService.uploadImageToFileSystem(userResponse.getImage(), userResponse.getPdf());
-
-        String authorId = teacherUniqueId(userResponse.getTeacherName());
-            author.setId(authorId);
-            author.setName(userResponse.getTeacherName());
-
-        this.authorRepository.save(author);     //persist using repository
-
-        String bookId = bookUniqueId(userResponse.getTitle());
-            book.setId(bookId);
-            book.setTitle(userResponse.getTitle());
-            book.setDescription(userResponse.getDescription());
-            book.setPublishedDate(LocalDate.now());
-            book.setAuthorNames(userResponse.getTeacherName());
-            book.setAuthorID(authorId);
-            book.setBranch(userResponse.getBranch());
-            book.setSemester(Integer.parseInt(userResponse.getSemester()));
-            book.setCoverId(imgId);
-            book.setOrignalName(userResponse.getPdf().getOriginalFilename());
-
-        this.bookRepository.save(book);         //persist using repository
+        String bookId = bookUniqueId(details.getTitle());
+        book.setId(bookId);
+        book.setTitle(details.getTitle());
+        book.setDescription(details.getDescription());
+        book.setPublishedDate(LocalDate.now());
+        book.setAuthorNames(details.getTeacherName());
+        book.setAuthorID(authorId);
+        book.setSemester(Integer.parseInt(details.getSemester()));
+        book.setBranch(details.getBranch());
+        book.setType(details.getType());
+        book.setSubjectCode(details.getScode());
+        book.setPdfOriginalName(details.getPdf().getOriginalFilename());
+        book.setPdfFilePath(pdfFilePath);
+        book.setImgName(details.getImage().getOriginalFilename());
+        book.setImgType(details.getImage().getContentType());
+        book.setImgFilePath(imgFilePath);
+        this.bookRepository.save(book);
     }
-    private String teacherUniqueId(String name){
+
+    private String teacherUniqueId(String name) {
         return name.toUpperCase().replace(" ", "").substring(0, 2)
                 + String.format("%04d", random.nextInt(10000));
     }
-    private String bookUniqueId(String name){
+
+    private String bookUniqueId(String name) {
         return name.toUpperCase().replace(" ", "").substring(0, 3)
                 + String.format("%04d", random.nextInt(10000));
     }

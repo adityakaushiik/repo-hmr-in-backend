@@ -16,17 +16,17 @@
 <div class="card" style="width: 18rem;">
     <img th:src="${image}" class="card-img-top" alt="...">
     <div class="card-body">
-        <h5 class="card-title" th:text="${userResponse.title}">Card title</h5>
-        <p class="card-text" th:text="${userResponse.description}">Book Description</p>
+        <h5 class="card-title" th:text="${registrationDetails.title}">Card title</h5>
+        <p class="card-text" th:text="${registrationDetails.description}">Book Description</p>
     </div>
     <ul class="list-group list-group-flush">
-        <li class="list-group-item" th:text="${userResponse.teacherName}">Cras justo odio</li>
-        <li class="list-group-item" th:text="${userResponse.branch}">Dapibus ac facilisis in</li>
-        <li class="list-group-item" th:text="${userResponse.semester}">Vestibulum at eros</li>
+        <li class="list-group-item" th:text="${registrationDetails.teacherName}">teacher name</li>
+        <li class="list-group-item" th:text="${registrationDetails.branch}">branch</li>
+        <li class="list-group-item" th:text="${registrationDetails.semester}">semester</li>
     </ul>
     <div class="card-body">
-        <a href="#" class="card-link">Done</a>
-        <a href="#" class="card-link">Add Another</a>
+        <a href="/search" class="card-link">Done</a>
+        <a href="/register" class="card-link">Add Another</a>
     </div>
 </div>
 </body>

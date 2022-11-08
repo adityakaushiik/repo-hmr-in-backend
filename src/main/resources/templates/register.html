@@ -12,26 +12,39 @@
 
 <body>
 <form action="/register" method="post" enctype="multipart/form-data">
-<section class="registration">
-    <div>
-        <h2>Registration Form</h2>
+    <section class="registration">
+        <div>
+            <h2>Registration Form</h2>
             <label for="label" class="lable-text">Teacher Name</label>
             <input type="text" placeholder="Enter Teacher Name Here" name="teacherName" class="input-box"><br>
+
+            <label for="label" class="lable-text">Are you the author ? </label>
+            <input type="checkbox" placeholder="Enter Here" name="isAuthor" class="input-box"><br>
 
             <label for="label" class="lable-text">Title</label>
             <input type="text" placeholder="Enter Title Here" name="title" class="input-box"><br>
 
             <label for="label" class="lable-text">Branch</label>
-            <select name="branch"  class="dropdown-box">
+            <select name="branch" class="dropdown-box">
                 <option value="CSE" selected>CSE</option>
                 <option value="IT">IT</option>
                 <option value="ECE">ECE</option>
                 <option value="ME">ME</option>
             </select><br>
 
+            <label for="label" class="lable-text">Type</label>
+            <select name="type" class="dropdown-box">
+                <option value="NOTES" selected>NOTES</option>
+                <option value="BOOK" >BOOK</option>
+                <option value="SMPL">SAMPLE PAPER</option>
+                <option value="SYLB">SYLLABUS</option>
+                <option value="ASMT">ASSIGNMENT</option>
+                <option value="PRFI">PRACTICAL FILE</option>
+            </select><br>
+
             <label for="label" class="lable-text">Semester</label>
-            <select name="semester"  class="dropdown-box">
-                <option value="1">1</option>
+            <select name="semester" class="dropdown-box">
+                <option value="1" selected>1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
@@ -41,11 +54,11 @@
                 <option value="8">8</option>
             </select><br>
 
-            <label for="label" class="lable-text">Subject code</label>
-            <input type="text" placeholder="Enter Here" name="subjectcode" class="input-box"><br>
+            <label for="label" class="lable-text">Subject Code</label>
+            <input type="text" placeholder="Enter Teacher Name Here" name="scode" class="input-box"><br>
 
             <label for="label" class="lable-text">Description</label>
-            <textarea placeholder="Enter Description Here" name="description" rows="4" ></textarea><br>
+            <textarea placeholder="Enter Description Here" name="description" rows="4"></textarea><br>
 
             <label for="avatar">Choose a cover image :</label>
             <input type="file" name="image"><br>

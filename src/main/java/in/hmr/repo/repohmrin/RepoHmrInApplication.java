@@ -13,7 +13,6 @@ import java.nio.file.Path;
 @SpringBootApplication
 @EnableConfigurationProperties({DataStaxAstraProperties.class})
 public class RepoHmrInApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(RepoHmrInApplication.class, args);
     }

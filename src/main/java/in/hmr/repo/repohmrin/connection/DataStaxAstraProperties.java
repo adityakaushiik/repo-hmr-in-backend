@@ -8,9 +8,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class DataStaxAstraProperties {
     private File secureConnectBundel;
 
-    public DataStaxAstraProperties() {
-    }
-
     public File getSecureConnectBundel() {
         return this.secureConnectBundel;
     }
