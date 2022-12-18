@@ -11,7 +11,7 @@ public class RegistrationDetails {
     private String description;
     private String type;
     private boolean isAuthor;       // to be used
-    private MultipartFile image;
+//    private MultipartFile image;
     private MultipartFile pdf;
 
     public String getTeacherName() {
@@ -63,13 +63,13 @@ public class RegistrationDetails {
         isAuthor = author;
     }
 
-    public MultipartFile getImage() {
-        return image;
-    }
-
-    public void setImage(MultipartFile image) {
-        this.image = image;
-    }
+//    public MultipartFile getImage() {
+//        return image;
+//    }
+//
+//    public void setImage(MultipartFile image) {
+//        this.image = image;
+//    }
 
     public MultipartFile getPdf() {
         return pdf;
@@ -93,10 +93,5 @@ public class RegistrationDetails {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    @Override
-    public String toString() {
-        return "UserResponse{" + "teacherName='" + teacherName + '\'' + ", title='" + title + '\'' + ", branch='" + branch + '\'' + ", semester='" + semester + '\'' + ", scode='" + scode + '\'' + ", description='" + description + '\'' + ", isAuthor=" + isAuthor + ", image=" + image + ", pdf=" + pdf + '}';
     }
 }

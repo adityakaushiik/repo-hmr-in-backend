@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Home</title>
+</head>
+
+<body>
+
+
+    <section class="upload_banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3"><img src="upload-img/upload-1.png" alt=""></div>
+                <div class="col-lg-6">
+                    <h1>Don't get <span>confused</span></h1>
+                    <h1>Go and get your</h1>
+
+                    <h1><span>Study material</span> easily.</h1>
+                </div>
+                <div class="col-lg-3"><img src="upload-img/bird.png" alt=""></div>
+            </div>
+        </div>
+    </section>
+    <section class="border-space"></section>
+    <section class="upload_form">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h3>File Upload Form</h3>
+                    <form action="">
+                        <label for="">Name *</label>
+                        <input type="text" name="name" required> <br>
+
+                        <label for="">Title *</label>
+                        <input type="text" name="title" required> <br>
+
+                        <label for="label" class="label-text">Branch *</label>
+                        <select name="" id="" class="dropdown-box" required>
+                            <option value="" disabled selected>Select Branch</option>
+                            <option value="CSE" selected>CSE</option>
+                            <option value="IT">IT</option>
+                            <option value="ECE">ECE</option>
+                            <option value="ME">ME</option>
+                        </select> <br>
+
+                        <label for="label" class="label-text">Semester *</label>
+                        <select name="" id="options" class="dropdown-box" required>
+                            <option value="" disabled selected>Select Semester</option>
+                            <option value="sem 1">1</option>
+                            <option value="sem 2">2</option>
+                            <option value="sem 3">3</option>
+                            <option value="sem 4">4</option>
+                            <option value="sem 5">5</option>
+                            <option value="sem 6">6</option>
+                            <option value="sem 7">7</option>
+                            <option value="sem 8">8</option>
+                        </select> <br>
+
+                        <label for="label" class="label-text">Subject *</label>
+                        <select name="" id="options" class="dropdown-box" required>
+                            <option value="" disabled selected>Select Subject</option>
+                            <option value="sem 1">1</option>
+                            <option value="sem 2">2</option>
+                            <option value="sem 3">3</option>
+                            <option value="sem 4">4</option>
+                            <option value="sem 5">5</option>
+                            <option value="sem 6">6</option>
+                            <option value="sem 7">7</option>
+                            <option value="sem 8">8</option>
+                        </select> <br>
+
+                        <label for="label" class="label-text">Type *</label>
+                        <select name="" id="options" class="dropdown-box" required>
+                            <option value="" disabled selected>Select Type</option>
+                            <option value="notes">Notes</option>
+                            <option value="practical file">Practical file</option>
+                            <option value="question paper">Question paper</option>
+                            <option value="e-book">E-book</option>
+                            <option value="akash">Akash</option>
+                        </select> <br>
+
+                        <label for="label" class="label-text">Description </label>
+                        <textarea name="text-area" id="" cols="30" rows="8"></textarea>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+</body>
+
+</html>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700;800&display=swap%27');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;600;700;800&display=swap');
+
+    .upload_banner {
+        background: linear-gradient(256.13deg, #D0E3F0 20.43%, rgba(217, 217, 217, 0) 68.74%);
+    }
+
+    .upload_banner>.container>.row>.col-lg-6 h1 {
+        font-family: 'Merriweather';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 70px;
+        line-height: 60px;
+        color: #272444;
+
+        text-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+    }
+    .upload_banner>.container>.row>.col-lg-6 {
+        padding: 50px 20px 20px 82px;
+    }
+
+    .upload_banner>.container>.row>.col-lg-6 span {
+        font-family: 'Merriweather';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 70px;
+
+        color: #FF6525;
+
+        text-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .border-space{
+        padding: 20px;
+    margin: 20px 0;
+    background-color: #e2e2e2;
+    }
+
+    .upload_form{
+        background-color: #e2e2e2;
+    }
+    .upload_form>.container>.row>.col{
+        background-color: #ffffff;
+        box-shadow: 66px 48px 55px 5px rgba(0, 0, 0, 0.19);
+border-radius: 30px;
+    }
+</style>

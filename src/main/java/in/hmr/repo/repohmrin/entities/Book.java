@@ -48,15 +48,16 @@ public class Book {
     @Column("pdf_path")
     @CassandraType(type = CassandraType.Name.TEXT)
     private String pdfFilePath;
-    @Column("img_name")
-    @CassandraType(type = CassandraType.Name.TEXT)
-    private String imgName;
-    @Column("img_type")
-    @CassandraType(type = CassandraType.Name.TEXT)
-    private String imgType;
-    @Column("img_path")
-    @CassandraType(type = CassandraType.Name.TEXT)
-    private String imgFilePath;
+
+//    @Column("img_name")
+//    @CassandraType(type = CassandraType.Name.TEXT)
+//    private String imgName;
+//    @Column("img_type")
+//    @CassandraType(type = CassandraType.Name.TEXT)
+//    private String imgType;
+//    @Column("img_path")
+//    @CassandraType(type = CassandraType.Name.TEXT)
+//    private String imgFilePath;
 
 
     public String getId() {
@@ -155,27 +156,27 @@ public class Book {
         this.pdfFilePath = pdfFilePath;
     }
 
-    public String getImgName() {
-        return imgName;
-    }
-
-    public void setImgName(String imgName) {
-        this.imgName = imgName;
-    }
-
-    public String getImgType() {
-        return imgType;
-    }
-
-    public void setImgType(String imgType) {
-        this.imgType = imgType;
-    }
-
-    public String getImgFilePath() {
-        return imgFilePath;
-    }
-
-    public void setImgFilePath(String imgFilePath) {
-        this.imgFilePath = imgFilePath;
-    }
+//    public String getImgName() {
+//        return imgName;
+//    }
+//
+//    public void setImgName(String imgName) {
+//        this.imgName = imgName;
+//    }
+//
+//    public String getImgType() {
+//        return imgType;
+//    }
+//
+//    public void setImgType(String imgType) {
+//        this.imgType = imgType;
+//    }
+//
+//    public String getImgFilePath() {
+//        return imgFilePath;
+//    }
+//
+//    public void setImgFilePath(String imgFilePath) {
+//        this.imgFilePath = imgFilePath;
+//    }
 }

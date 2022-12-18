@@ -19,7 +19,7 @@ public class RegistrationController {
 
     @GetMapping({"/register"})
     public String index() {
-        return "register";
+        return "updoad-page";
     }
 
     @PostMapping({"/register"})
@@ -27,9 +27,9 @@ public class RegistrationController {
                                    Model model) throws IOException {
         databaseEntry.addEntry(registrationDetails);
 
-        String filePath = FOLDER_PATH + registrationDetails.getImage().getOriginalFilename();
+//        String filePath = FOLDER_PATH + registrationDetails.getImage().getOriginalFilename();
         model.addAttribute("user", registrationDetails);
-        model.addAttribute("image", filePath);
+//        model.addAttribute("image", filePath);
         return "registration-complete";
     }
 }
