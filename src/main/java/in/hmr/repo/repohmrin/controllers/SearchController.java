@@ -21,7 +21,7 @@ public class SearchController {
 
     @GetMapping({"/search"})
     public String search(){
-        return "Search-page";
+        return "search";
     }
 
     @PostMapping({"/search"})
@@ -38,7 +38,7 @@ public class SearchController {
 
         model.addAttribute("books",booksByQuery);
         model.addAttribute("list",list);
-        return "Search-page";
+        return "search";
     }
 
 }
