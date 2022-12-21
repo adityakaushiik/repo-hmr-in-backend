@@ -10,8 +10,6 @@ public class RegistrationDetails {
     private String scode;
     private String description;
     private String type;
-    private boolean isAuthor;       // to be used
-//    private MultipartFile image;
     private MultipartFile pdf;
 
     public String getTeacherName() {
@@ -55,13 +53,13 @@ public class RegistrationDetails {
         this.description = description;
     }
 
-    public boolean isAuthor() {
-        return isAuthor;
-    }
-
-    public void setAuthor(boolean author) {
-        isAuthor = author;
-    }
+//    public boolean isAuthor() {
+//        return isAuthor;
+//    }
+//
+//    public void setAuthor(boolean author) {
+//        isAuthor = author;
+//    }
 
 //    public MultipartFile getImage() {
 //        return image;

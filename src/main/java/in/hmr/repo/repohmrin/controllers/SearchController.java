@@ -40,5 +40,4 @@ public class SearchController {
         model.addAttribute("list",list);
         return "Search-page";
     }
-
 }

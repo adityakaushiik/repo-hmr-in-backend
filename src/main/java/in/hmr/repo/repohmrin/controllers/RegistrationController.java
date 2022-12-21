@@ -25,11 +25,12 @@ public class RegistrationController {
     @PostMapping({"/register"})
     public String userRegistration(@ModelAttribute RegistrationDetails registrationDetails,
                                    Model model) throws IOException {
+        System.out.println("reached");
         databaseEntry.addEntry(registrationDetails);
 
-//        String filePath = FOLDER_PATH + registrationDetails.getImage().getOriginalFilename();
         model.addAttribute("user", registrationDetails);
-//        model.addAttribute("image", filePath);
         return "registration-complete";
     }
 }
+//        String filePath = FOLDER_PATH + registrationDetails.getImage().getOriginalFilename();
+//        model.addAttribute("image", filePath);

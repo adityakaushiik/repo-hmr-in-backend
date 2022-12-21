@@ -13,8 +13,6 @@
 </head>
 
 <body>
-
-
     <section class="upload_banner">
         <div class="container">
             <div class="row">
@@ -30,19 +28,21 @@
             </div>
         </div>
     </section>
+
     <section class="border-space"></section>
     <section class="upload_form">
         <div class="container">
             <div class="row uploadr">
                 <div class="col upload-headc">
                     <h3 class="upload-head">File Upload Form</h3>
-                    <form action="">
+
+                    <form action="/register" method="post" enctype="multipart/form-data" >
                         <div class="row uinput-top upload-form-row">
                             <div class="col">
                                 <label for="name" class="ulabel-text">Name *</label>
                             </div>
                             <div class="col">
-                                <input type="text" name="name" required class="uinput">
+                                <input type="text" name="teacherName" required class="uinput">
                             </div>
                         </div>
                         <div class="row upload-form-row">
@@ -53,51 +53,6 @@
                                 <input type="text" name="title" required class="uinput">
                             </div>
                         </div>
-
-<!--                        <section class="search">-->
-<!--                            <div class="container">-->
-<!--                                <div class="row">-->
-<!--                                    <div class="col">-->
-<!--                                        <h4 class="search-filter-label">Search</h4>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class="row">-->
-<!--                                    <div class="col">-->
-<!--                                        <label for="label" class="lable-text">Branch :</label>-->
-<!--                                        <select name="branch" id="bran" class="dropdown-box"-->
-<!--                                                onchange="getSub(this.value,document.getElementById('sem').value)">-->
-<!--                                            <option value="" disabled selected>Select Branch</option>-->
-<!--                                            <option value="CSE" selected>CSE</option>-->
-<!--                                            <option value="IT">IT</option>-->
-<!--                                            <option value="ECE">ECE</option>-->
-<!--                                            <option value="ME">ME</option>-->
-<!--                                        </select>-->
-<!--                                    </div>-->
-<!--                                    <div class="col">-->
-<!--                                        <label for="label" class="lable-text">Semester :</label>-->
-<!--                                        <select name="semester" id="sem" class="dropdown-box"-->
-<!--                                                onchange="getSub(document.getElementById('bran').value,this.value)">-->
-<!--                                            <option value="1" selected>1</option>-->
-<!--                                            <option value="2">2</option>-->
-<!--                                            <option value="3">3</option>-->
-<!--                                            <option value="4">4</option>-->
-<!--                                            <option value="5">5</option>-->
-<!--                                            <option value="6">6</option>-->
-<!--                                            <option value="7">7</option>-->
-<!--                                            <option value="8">8</option>-->
-<!--                                        </select>-->
-<!--                                    </div>-->
-<!--                                    <div class="col">-->
-<!--                                        <label for="label" class="lable-text">Subject :</label>-->
-<!--                                        <select id="search" class="dropdown-box"></select>-->
-<!--                                    </div>-->
-<!--                                    <div class="col">-->
-<!--                                        <button class="search-btn">Go For It</button>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </section>-->
-
 
                         <div class="row upload-form-row">
                             <div class="col">
@@ -137,7 +92,7 @@
                                 <label for="label" class="ulabel-text">Subject *</label>
                             </div>
                             <div class="col">
-                                <select id="search" class="dropdown-box"></select>
+                                <select id="search" class="dropdown-box" name="scode"></select>
                             </div>
                         </div>
                         <div class="row upload-form-row">
@@ -160,7 +115,7 @@
                                 <label for="label" class="ulabel-text">Description </label>
                             </div>
                             <div class="col">
-                                <textarea name="text-area" id="" cols="30" rows="8" class="uinput"></textarea>
+                                <textarea name="description" id="" cols="30" rows="8" class="uinput"></textarea>
                             </div>
                         </div>
                         <div class="row upload-form-row">
@@ -168,20 +123,20 @@
                                 <label for="file" class="ulabel-text">File *</label>
                             </div>
                             <div class="col">
-                                <input type="file" class="uinput" accept="application/pdf" oninput="showTab(1)"required>
-<!--                                <img id="pdf_preview"/>-->
-<!--                                <span id="preview_msg">Preview loading</span>-->
-<!--                                <canvas-->
-<!--                                        id="the-canvas"-->
-<!--                                        style="direction: ltr; display: none"-->
-<!--                                ></canvas>-->
+                                        <input
+                                                name="pdf"
+                                                type="file"
+                                                id="the_pdf"
+                                                accept=".pdf,application/pdf"
+                                                required
+                                        />
                             </div>
                         </div>
-                        <div class="row upload-form-row">
-                            <div class="col upload-btnc">
-                                <button class="upload-btn">Here You Go!</button>
-                            </div>
-                        </div>
+<!--                        <div class="row upload-form-row">-->
+<!--                            <div class="col upload-btnc">-->
+                                <input type="submit" value="Submit" class="submit-form"/>
+<!--                            </div>-->
+<!--                        </div>-->
                     </form>
                 </div>
             </div>
@@ -189,44 +144,22 @@
     </section>
 
 
-<!--    <form id="pdfUpload">-->
-<!--        <div class="step">-->
-<!--            <input-->
-<!--                    type="file"-->
-<!--                    id="the_pdf"-->
-<!--                    accept=".pdf,application/pdf"-->
-<!--                    oninput="showTab(1)"-->
-<!--                    required-->
-<!--            />-->
-<!--        </div>-->
-
-<!--        <div class="step">-->
-<!--            <img id="pdf_preview"/>-->
-<!--            <span id="preview_msg">Preview loading</span>-->
-<!--        </div>-->
-
-<!--        <div class="step">-->
-<!--            <p>Some other information about you:</p>-->
-<!--            <input type="text" id="your_name"/>-->
-<!--        </div>-->
-
-<!--        <div style="padding-top: 48px"></div>-->
-<!--    </form>-->
-<!--    </div>-->
-<!--    <canvas-->
-<!--            id="the-canvas"-->
-<!--            style="direction: ltr; display: none"-->
-<!--    ></canvas>-->
-
-<!--    <input type="submit" value="Submit" class="submit-form"/>-->
-
-
-
 
 
     <script type="text/javascript" th:src="@{/scripts/get-subjects.js}"></script>
-    <script type="text/javascript" th:src="@{/scripts/load-preview.js}"></script>
+<!--    <script type="text/javascript" th:src="@{/scripts/load-preview.js}"></script>-->
+<!--    <script>-->
+<!--        var currentTab = 0;-->
+<!--        showTab(currentTab);-->
+<!--        pdfjsLib.GlobalWorkerOptions.workerSrc =-->
+<!--            "https://unpkg.com/pdfjs-dist/build/pdf.worker.js";-->
 
+<!--        function showTab(n) {-->
+<!--            var x = document.getElementsByClassName("step");-->
+<!--            x[n].style.display = "block";-->
+<!--            document.getElementById("prevBtn").style.display = "inline";-->
+<!--        }-->
+<!--    </script>-->
 </body>
 
 </html>

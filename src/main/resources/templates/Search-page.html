@@ -23,6 +23,7 @@
                 <h4 class="search-filter-label">Search</h4>
             </div>
         </div>
+        <form action="/search" method="post">
         <div class="row">
             <div class="col">
                 <label for="label" class="lable-text">Branch :</label>
@@ -51,12 +52,13 @@
             </div>
             <div class="col">
                 <label for="label" class="lable-text">Subject :</label>
-                <select id="search" class="dropdown-box"></select>
+                <select id="search" class="dropdown-box" name="subjectCode"></select>
             </div>
             <div class="col">
-                <button class="search-btn">Go For It</button>
+                <input type="submit" value="Search" class="search-parameters"/>
             </div>
         </div>
+        </form>
     </div>
 </section>
     
@@ -64,31 +66,35 @@
         <div class="container">
             <span class="notes_heading">Notes / </span>
             <div class="row">
-                <div class="col">
-                    <img src="D:\Minor project\Resources\Sample-image.png" alt="">
-                    <h5 class="book-title">Title of book</h5>
-                    <button> View </button>
+                <div th:each="book :${books}">
+                    <div class="col">
+                     <img src="D:\Minor project\Resources\Sample-image.png" alt="">
+                     <h5 class="book-title" th:text="${book.title}">Title of book</h5>
+                        <button th:text="${book.publishedDate}"> View </button>
+                        <base href="/search/">
+                        <a th:href="${book.id}">download</a>
+                    </div>
                 </div>
-                <div class="col">
-                    <img src="D:\Minor project\Resources\Sample-image.png" alt="">
-                    <h5 class="book-title">Title of book</h5>
-                    <button> View </button>
-                </div>
-                <div class="col">
-                    <img src="D:\Minor project\Resources\Sample-image.png" alt="">
-                    <h5 class="book-title">Title of book</h5>
-                    <button> View </button>
-                </div>
-                <div class="col">
-                    <img src="D:\Minor project\Resources\Sample-image.png" alt="">
-                    <h5 class="book-title">Title of book</h5>
-                    <button> View </button>
-                </div>
-                <div class="col">
-                    <img src="D:\Minor project\Resources\Sample-image.png" alt="">
-                    <h5 class="book-title">Title of book</h5>
-                    <button> View </button>
-                </div>
+<!--                <div class="col">-->
+<!--                    <img src="D:\Minor project\Resources\Sample-image.png" alt="">-->
+<!--                    <h5 class="book-title">Title of book</h5>-->
+<!--                    <button> View </button>-->
+<!--                </div>-->
+<!--                <div class="col">-->
+<!--                    <img src="D:\Minor project\Resources\Sample-image.png" alt="">-->
+<!--                    <h5 class="book-title">Title of book</h5>-->
+<!--                    <button> View </button>-->
+<!--                </div>-->
+<!--                <div class="col">-->
+<!--                    <img src="D:\Minor project\Resources\Sample-image.png" alt="">-->
+<!--                    <h5 class="book-title">Title of book</h5>-->
+<!--                    <button> View </button>-->
+<!--                </div>-->
+<!--                <div class="col">-->
+<!--                    <img src="D:\Minor project\Resources\Sample-image.png" alt="">-->
+<!--                    <h5 class="book-title">Title of book</h5>-->
+<!--                    <button> View </button>-->
+<!--                </div>-->
             </div>
         </div>
     </section>
