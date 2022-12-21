@@ -19,7 +19,7 @@ public class RegistrationController {
 
     @GetMapping({"/register"})
     public String index() {
-        return "register";
+        return "upload-page";
     }
 
     @PostMapping({"/register"})
