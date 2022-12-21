@@ -7,10 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.cassandra.CqlSessionBuilderCustomizer;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.CacheControl;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.nio.file.Path;
+import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
 @EnableConfigurationProperties({DataStaxAstraProperties.class})
@@ -18,7 +20,6 @@ public class RepoHmrInApplication implements WebMvcConfigurer {
     public static void main(String[] args) {
         SpringApplication.run(RepoHmrInApplication.class, args);
     }
-
     @Bean
     public CqlSessionBuilderCustomizer sessionBuilderCustomizer(DataStaxAstraProperties astraProperties) {
         Path bundle = astraProperties.getSecureConnectBundel().toPath();
@@ -29,7 +30,8 @@ public class RepoHmrInApplication implements WebMvcConfigurer {
 
 //    @Override
 //    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry.addResourceHandler( "/js/**")
-//                .addResourceLocations("classpath:/scripts/");
+//        // Register resource handler for images
+//        registry.addResourceHandler("/images/**").addResourceLocations("/WEB-INF/images/")
+//                .setCacheControl(CacheControl.maxAge(2, TimeUnit.HOURS).cachePublic());
 //    }
 }

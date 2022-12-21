@@ -14,59 +14,49 @@
 
 <body>
 
-   
-    <section class="search">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <h4 class="search-filter-label">Search</h4>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <label for="label" class="lable-text">Branch :</label>
-                    <select name="" id="" class="dropdown-box">
-                        <option value="" disabled selected>Select Branch</option>
-                        <option value="CSE" selected>CSE</option>
-                        <option value="IT">IT</option>
-                        <option value="ECE">ECE</option>
-                        <option value="ME">ME</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <label for="label" class="lable-text">Semester :</label>
-                    <select name="" id="options" class="dropdown-box">
-                        <option value="" disabled selected>Select Semester</option>
-                        <option value="sem 1">1</option>
-                        <option value="sem 2">2</option>
-                        <option value="sem 3">3</option>
-                        <option value="sem 4">4</option>
-                        <option value="sem 5">5</option>
-                        <option value="sem 6">6</option>
-                        <option value="sem 7">7</option>
-                        <option value="sem 8">8</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <label for="label" class="lable-text">Subject :</label>
-                    <select name="" id="options" class="dropdown-box" placeleholder>
-                        <option value="" disabled selected>Select Subject</option>
-                        <option value="sem 1">1</option>
-                        <option value="sem 2">2</option>
-                        <option value="sem 3">3</option>
-                        <option value="sem 4">4</option>
-                        <option value="sem 5">5</option>
-                        <option value="sem 6">6</option>
-                        <option value="sem 7">7</option>
-                        <option value="sem 8">8</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <button class="search-btn">Go For It</button>
-                </div>
+<section class="search">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h4 class="search-filter-label">Search</h4>
             </div>
         </div>
-    </section>
+        <div class="row">
+            <div class="col">
+                <label for="label" class="lable-text">Branch :</label>
+                <select name="branch" id="bran" class="dropdown-box"
+                        onchange="getSub(this.value,document.getElementById('sem').value)">
+                    <option value="" disabled selected>Select Branch</option>
+                    <option value="CSE" selected>CSE</option>
+                    <option value="IT">IT</option>
+                    <option value="ECE">ECE</option>
+                    <option value="ME">ME</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="label" class="lable-text">Semester :</label>
+                <select name="semester" id="sem" class="dropdown-box"
+                        onchange="getSub(document.getElementById('bran').value,this.value)">
+                    <option value="1" selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </select>
+            </div>
+            <div class="col">
+                <label for="label" class="lable-text">Subject :</label>
+                <select id="search" class="dropdown-box"></select>
+            </div>
+            <div class="col">
+                <button class="search-btn">Go For It</button>
+            </div>
+        </div>
+    </div>
+</section>
     
     <section class="notes">
         <div class="container">
@@ -196,13 +186,10 @@
             </div>
         </div>
     </section>
-    
 
-
-
-
+    <script type="text/javascript" th:src="@{/scripts/get-subjects.js}"></script>
+    <script type="text/javascript" th:src="@{/scripts/load-preview.js}"></script>
 </body>
-
 </html>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
