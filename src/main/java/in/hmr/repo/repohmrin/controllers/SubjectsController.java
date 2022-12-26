@@ -1,23 +1,21 @@
 package in.hmr.repo.repohmrin.controllers;
 
+import in.hmr.repo.repohmrin.userResponses.GetSubjects;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@RestController
 public class SubjectsController {
-
-    @PostMapping("/search/getSubjects")
+    @RequestMapping("/getSubjects")
     @ResponseBody
-    public String[] subjects(@RequestBody String string) throws JSONException {
-        JSONObject jsonObject = new JSONObject(string);
-        int semester = jsonObject.getInt("sem");
+    public String[] subjects(@RequestBody GetSubjects params){
+
+        int semester = params.getSemester();
 
         if (semester<3) {
             String[] CSE1 = {
