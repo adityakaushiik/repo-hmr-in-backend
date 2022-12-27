@@ -1,20 +1,19 @@
 package in.hmr.repo.repohmrin.controllers;
 
 import in.hmr.repo.repohmrin.userResponses.GetSubjects;
-import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
+@RequestMapping("api/")
 public class SubjectsController {
-    @RequestMapping("/getSubjects")
+    @PostMapping("getSubjects")
     @ResponseBody
     public String[] subjects(@RequestBody GetSubjects params){
-
+        System.out.println("got params"+params.getBranch()+params.getSemester());
         int semester = params.getSemester();
 
         if (semester<3) {

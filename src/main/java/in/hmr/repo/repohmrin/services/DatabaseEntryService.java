@@ -19,7 +19,7 @@ public class DatabaseEntryService {
     private AuthorRepository authorRepository;
     @Autowired
     private BookRepository bookRepository;
-    private final String PDF_FOLDER_PATH = "E:/repo.hmr_fileData/pdf/";
+    private final String PDF_FOLDER_PATH = "D:/hmr-repo/pdf/";
 //    private final String IMG_FOLDER_PATH = "E:/repo.hmr_fileData/img/";
     private final Random random = new Random();
 

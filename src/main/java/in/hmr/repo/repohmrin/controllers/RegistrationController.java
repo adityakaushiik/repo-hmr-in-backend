@@ -27,10 +27,6 @@ public class RegistrationController {
                                    Model model) throws IOException {
         System.out.println("reached");
         databaseEntry.addEntry(registrationDetails);
-
-        model.addAttribute("user", registrationDetails);
         return "registration-complete";
     }
 }
-//        String filePath = FOLDER_PATH + registrationDetails.getImage().getOriginalFilename();
-//        model.addAttribute("image", filePath);

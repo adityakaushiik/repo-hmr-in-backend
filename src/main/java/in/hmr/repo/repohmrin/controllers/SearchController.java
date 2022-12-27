@@ -18,15 +18,16 @@ import java.util.List;
 public class SearchController {
     @Autowired
     private BookRepository bookRepository;
-
-    @GetMapping({"/search"})
-    public String search(){
-        return "Search-page";
-    }
+//
+//    @GetMapping({"/search"})
+//    public String search(){
+//        return "Search-page";
+//    }
 
     @PostMapping({"/search"})
-    public String bookSearch(@ModelAttribute SearchParameters searchParameter ,
-                                   Model model){
+    public List<Book> bookSearch(@ModelAttribute SearchParameters searchParameter ,
+                                 Model model){
+        System.out.println("got api call");
         Slice<Book> booksSlice = bookRepository.findAllBookByBranchAndSemesterAndSubjectCode(
                 searchParameter.getBranch(),
                 searchParameter.getSemester(),
@@ -34,10 +35,7 @@ public class SearchController {
                 CassandraPageRequest.of(0,100));
         List<Book> booksByQuery = booksSlice.getContent();
 
-        List<String> list = List.of("abc","bcd","def");
-
         model.addAttribute("books",booksByQuery);
-        model.addAttribute("list",list);
-        return "Search-page";
+        return booksByQuery;
     }
 }
