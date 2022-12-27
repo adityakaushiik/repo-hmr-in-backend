@@ -20,19 +20,13 @@ public class DatabaseEntryService {
     @Autowired
     private BookRepository bookRepository;
     private final String PDF_FOLDER_PATH = "D:/hmr-repo/pdf/";
-//    private final String IMG_FOLDER_PATH = "E:/repo.hmr_fileData/img/";
     private final Random random = new Random();
 
     public void addEntry(RegistrationDetails details) throws IOException {
 
         String pdfFilePath = PDF_FOLDER_PATH +
                 details.getPdf().getOriginalFilename();
-//        String imgFilePath = IMG_FOLDER_PATH +
-//                details.getImage().getOriginalFilename();
-
         details.getPdf().transferTo(new File(pdfFilePath));
-//        details.getImage().transferTo(new File(imgFilePath));
-
         Author author = new Author();
         String authorId = teacherUniqueId(details.getTeacherName());
         author.setId(authorId);
@@ -53,9 +47,6 @@ public class DatabaseEntryService {
         book.setSubjectCode(details.getScode());
         book.setPdfOriginalName(details.getPdf().getOriginalFilename());
         book.setPdfFilePath(pdfFilePath);
-//        book.setImgName(details.getImage().getOriginalFilename());
-//        book.setImgType(details.getImage().getContentType());
-//        book.setImgFilePath(imgFilePath);
         this.bookRepository.save(book);
     }
 

@@ -7,26 +7,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.cassandra.core.query.CassandraPageRequest;
 import org.springframework.data.domain.Slice;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("api/")
 public class SearchController {
     @Autowired
     private BookRepository bookRepository;
-//
-//    @GetMapping({"/search"})
-//    public String search(){
-//        return "Search-page";
-//    }
 
     @PostMapping({"/search"})
-    public List<Book> bookSearch(@ModelAttribute SearchParameters searchParameter ,
-                                 Model model){
+    public List<Book> bookSearch(@ModelAttribute SearchParameters searchParameter){
         System.out.println("got api call");
         Slice<Book> booksSlice = bookRepository.findAllBookByBranchAndSemesterAndSubjectCode(
                 searchParameter.getBranch(),
@@ -34,8 +26,6 @@ public class SearchController {
                 searchParameter.getSubjectCode(),
                 CassandraPageRequest.of(0,100));
         List<Book> booksByQuery = booksSlice.getContent();
-
-        model.addAttribute("books",booksByQuery);
         return booksByQuery;
     }
 }

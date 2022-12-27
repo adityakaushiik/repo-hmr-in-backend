@@ -53,22 +53,6 @@ public class RegistrationDetails {
         this.description = description;
     }
 
-//    public boolean isAuthor() {
-//        return isAuthor;
-//    }
-//
-//    public void setAuthor(boolean author) {
-//        isAuthor = author;
-//    }
-
-//    public MultipartFile getImage() {
-//        return image;
-//    }
-//
-//    public void setImage(MultipartFile image) {
-//        this.image = image;
-//    }
-
     public MultipartFile getPdf() {
         return pdf;
     }

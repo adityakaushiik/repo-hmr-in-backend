@@ -5,27 +5,18 @@ import in.hmr.repo.repohmrin.services.DatabaseEntryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
-@Controller
+@RestController
+@RequestMapping("api/")
 public class RegistrationController {
     @Autowired
     private DatabaseEntryService databaseEntry;
-    private final String FOLDER_PATH = "file://E:/repo.hmr_fileData/img";
-
-    @GetMapping({"/register"})
-    public String index() {
-        return "upload-page";
-    }
 
     @PostMapping({"/register"})
-    public String userRegistration(@ModelAttribute RegistrationDetails registrationDetails,
-                                   Model model) throws IOException {
-        System.out.println("reached");
+    public String userRegistration(@ModelAttribute RegistrationDetails registrationDetails) throws IOException {
         databaseEntry.addEntry(registrationDetails);
         return "registration-complete";
     }
