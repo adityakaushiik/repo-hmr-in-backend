@@ -7,7 +7,7 @@ public class RegistrationDetails {
     private String title;
     private String branch;
     private String semester;
-    private String scode;
+    private String subjectCode;
     private String description;
     private String type;
     private MultipartFile pdf;
@@ -61,12 +61,12 @@ public class RegistrationDetails {
         this.pdf = pdf;
     }
 
-    public String getScode() {
-        return scode;
+    public String getSubjectCode() {
+        return subjectCode;
     }
 
-    public void setScode(String scode) {
-        this.scode = scode;
+    public void setSubjectCode(String subjectCode) {
+        this.subjectCode = subjectCode;
     }
 
     public String getType() {
@@ -75,5 +75,19 @@ public class RegistrationDetails {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "RegistrationDetails{" +
+                "teacherName='" + teacherName + '\'' +
+                ", title='" + title + '\'' +
+                ", branch='" + branch + '\'' +
+                ", semester='" + semester + '\'' +
+                ", subjectCode='" + subjectCode + '\'' +
+                ", description='" + description + '\'' +
+                ", type='" + type + '\'' +
+                ", pdf=" + pdf +
+                '}';
     }
 }

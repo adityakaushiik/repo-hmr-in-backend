@@ -44,7 +44,7 @@ public class DatabaseEntryService {
         book.setSemester(Integer.parseInt(details.getSemester()));
         book.setBranch(details.getBranch());
         book.setType(details.getType());
-        book.setSubjectCode(details.getScode());
+        book.setSubjectCode(details.getSubjectCode());
         book.setPdfOriginalName(details.getPdf().getOriginalFilename());
         book.setPdfFilePath(pdfFilePath);
         this.bookRepository.save(book);

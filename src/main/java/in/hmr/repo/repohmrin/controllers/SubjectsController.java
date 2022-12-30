@@ -1,13 +1,9 @@
 package in.hmr.repo.repohmrin.controllers;
 
-import in.hmr.repo.repohmrin.entities.Subject;
 import in.hmr.repo.repohmrin.repositories.SubjectsRepository;
 import in.hmr.repo.repohmrin.userResponses.GetSubjects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
