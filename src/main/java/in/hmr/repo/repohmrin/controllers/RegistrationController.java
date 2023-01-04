@@ -15,6 +15,7 @@ public class RegistrationController {
     @PostMapping("/register")
     public String uploadSingleFile (@RequestParam("file") MultipartFile file) {
         System.out.println(file.getOriginalFilename());
+        //wtf
         return "file uploaded";
     }
 }
