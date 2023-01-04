@@ -10,7 +10,7 @@ public class RegistrationDetails {
     private String subjectCode;
     private String description;
     private String type;
-    private MultipartFile pdf;
+//    private MultipartFile pdf;
 
     public String getTeacherName() {
         return teacherName;
@@ -53,13 +53,13 @@ public class RegistrationDetails {
         this.description = description;
     }
 
-    public MultipartFile getPdf() {
-        return pdf;
-    }
-
-    public void setPdf(MultipartFile pdf) {
-        this.pdf = pdf;
-    }
+//    public MultipartFile getPdf() {
+//        return pdf;
+//    }
+//
+//    public void setPdf(MultipartFile pdf) {
+//        this.pdf = pdf;
+//    }
 
     public String getSubjectCode() {
         return subjectCode;
