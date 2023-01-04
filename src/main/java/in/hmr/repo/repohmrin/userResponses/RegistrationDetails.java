@@ -77,17 +77,5 @@ public class RegistrationDetails {
         this.type = type;
     }
 
-    @Override
-    public String toString() {
-        return "RegistrationDetails{" +
-                "teacherName='" + teacherName + '\'' +
-                ", title='" + title + '\'' +
-                ", branch='" + branch + '\'' +
-                ", semester='" + semester + '\'' +
-                ", subjectCode='" + subjectCode + '\'' +
-                ", description='" + description + '\'' +
-                ", type='" + type + '\'' +
-                ", pdf=" + pdf +
-                '}';
-    }
+
 }
