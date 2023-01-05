@@ -20,8 +20,7 @@ public class BookController {
     DownloadService downloadService;
 
     @GetMapping("/search/{bookId}")
-    public ResponseEntity<?> downloadImageFromFileSystem(@PathVariable String bookId)
-            throws IOException {
+    public ResponseEntity<?> downloadImageFromFileSystem(@PathVariable String bookId) throws IOException {
 
         byte[] pdfData = downloadService.downloadImageFromFileSystem(bookId);
 

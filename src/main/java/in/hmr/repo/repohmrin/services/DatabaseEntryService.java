@@ -49,6 +49,7 @@ public class DatabaseEntryService {
         book.setPdfOriginalName(file.getOriginalFilename());
         book.setPdfFilePath(pdfFilePath);
         this.bookRepository.save(book);
+        System.out.println("files uploaded "+file.getOriginalFilename());
     }
 
     private String teacherUniqueId(String name) {
