@@ -1,7 +1,5 @@
 package in.hmr.repo.repohmrin.userResponses;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class RegistrationDetails {
     private String teacherName;
     private String title;
