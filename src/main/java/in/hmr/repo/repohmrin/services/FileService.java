@@ -7,10 +7,7 @@ import com.google.gson.JsonObject;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -40,14 +37,29 @@ public class FileService {
 
     public JsonObject download(String fileName) throws IOException {
         String destFileName = UUID.randomUUID().toString().concat(this.getExtension(fileName));     // to set random string for destination file name
-        String destFilePath = "Downloads/" + destFileName;                                          // to set destination file path
+        String destFilePath = "C:\\Users\\User\\Desktop\\" + destFileName;                                          // to set destination file path
 
         ////////////////////////////////   Download   ////////////////////////////////////////////////////////////////////////
         Credentials credentials = GoogleCredentials.fromStream(
                 new FileInputStream("src/main/resources/repo-hmr-in-firebase-adminsdk-l9a71-2cd68c5af6.json"));
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
+//        File file = storage.get()
         Blob blob = storage.get(BlobId.of("repo-hmr-in.appspot.com", fileName));
         blob.downloadTo(Paths.get(destFilePath));
+
+
+////        Blob blob = rs.getBlob(column);
+//        InputStream in = blob.getBinaryStream();
+//        OutputStream out = new FileOutputStream(someFile);
+//        byte[] buff = new byte[4096];  // how much of the blob to read/write at a time
+//        int len = 0;
+//
+//        while ((len = in.read(buff)) != -1) {
+//            out.write(buff, 0, len);
+//        }
+//
+
+
         return sendResponse("200", "Successfully Downloaded!");
     }
 
