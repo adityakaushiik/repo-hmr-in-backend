@@ -8,11 +8,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
+import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class FileService {
@@ -35,23 +37,22 @@ public class FileService {
         return new String[]{"NA", "Unable To Get File"};
     }
 
-    public Blob download(String fileName) throws IOException {
+    public URL download(String fileName) throws IOException {
 //        String destFileName = UUID.randomUUID().toString().concat(this.getExtension(fileName));     // to set random string for destination file name
-        String destFilePath = "C:\\Users\\User\\Desktop\\" + fileName;                                          // to set destination file path
+//        String destFilePath = "C:\\Users\\User\\Desktop\\" + fileName;                                          // to set destination file path
 
+        System.out.println("recived : " + fileName);
         ////////////////////////////////   Download   ////////////////////////////////////////////////////////////////////////
         Credentials credentials = GoogleCredentials.fromStream(
                 new FileInputStream("src/main/resources/repo-hmr-in-firebase-adminsdk-l9a71-2cd68c5af6.json"));
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
-//        File file = storage.get()
-        Blob blob = storage.get(BlobId.of("repo-hmr-in.appspot.com", fileName));
-//        blob.downloadTo(Paths.get(destFilePath));
-        return blob;
+//        Blob blob = storage.get(BlobId.of("repo-hmr-in.appspot.com", fileName));
+        return storage.signUrl(BlobInfo.newBuilder("repo-hmr-in.appspot.com", fileName).build(),2, TimeUnit.DAYS);
     }
 
     private String uploadFile(File file, String fileName) throws IOException {
         BlobId blobId = BlobId.of("repo-hmr-in.appspot.com", fileName);
-        BlobInfo blobInfo = BlobInfo.newBuilder(blobId).setContentType("media").build();
+        BlobInfo blobInfo = BlobInfo.newBuilder(blobId).setContentType("application/pdf").build();
         Credentials credentials = GoogleCredentials.fromStream(
                 new FileInputStream("src/main/resources/repo-hmr-in-firebase-adminsdk-l9a71-2cd68c5af6.json"));
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
