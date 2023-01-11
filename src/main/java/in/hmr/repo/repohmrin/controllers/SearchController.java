@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("api/")
 public class SearchController {
@@ -18,8 +19,8 @@ public class SearchController {
     private BookRepository bookRepository;
 
     @PostMapping({"/search"})
-    public List<Book> bookSearch(@ModelAttribute SearchParameters searchParameter){
-        System.out.println("got api call");
+    public List<Book> bookSearch(@RequestBody SearchParameters searchParameter){
+        System.out.println("got api call "+searchParameter);
         Slice<Book> booksSlice = bookRepository.findAllBookByBranchAndSemesterAndSubjectCode(
                 searchParameter.getBranch(),
                 searchParameter.getSemester(),

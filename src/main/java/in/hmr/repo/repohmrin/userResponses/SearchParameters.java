@@ -23,4 +23,13 @@ public class SearchParameters {
     public void setSubjectCode(String subjectCode) {
         this.subjectCode = subjectCode;
     }
+
+    @Override
+    public String toString() {
+        return "SearchParameters{" +
+                "branch='" + branch + '\'' +
+                ", semester=" + semester +
+                ", subjectCode='" + subjectCode + '\'' +
+                '}';
+    }
 }
