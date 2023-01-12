@@ -45,20 +45,17 @@ public class Book {
     @Column("pdf_name")
     @CassandraType(type = CassandraType.Name.TEXT)
     private String pdfOriginalName;
-    @Column("pdf_path")
+    @Column("pdf_path")                 //not needed anymore
     @CassandraType(type = CassandraType.Name.TEXT)
     private String pdfFilePath;
 
-//    @Column("img_name")
-//    @CassandraType(type = CassandraType.Name.TEXT)
-//    private String imgName;
-//    @Column("img_type")
-//    @CassandraType(type = CassandraType.Name.TEXT)
-//    private String imgType;
-//    @Column("img_path")
-//    @CassandraType(type = CassandraType.Name.TEXT)
-//    private String imgFilePath;
+//    @Column("is_temp")                                // implement these
+//    @CassandraType(type = Name.BOOLEAN)
+//    private boolean isTemp;
 
+//    @Column("is_deleted")
+//    @CassandraType(type = Name.BOOLEAN)
+//    private boolean isDeleted;
 
     public String getId() {
         return id;
@@ -155,28 +152,4 @@ public class Book {
     public void setPdfFilePath(String pdfFilePath) {
         this.pdfFilePath = pdfFilePath;
     }
-
-//    public String getImgName() {
-//        return imgName;
-//    }
-//
-//    public void setImgName(String imgName) {
-//        this.imgName = imgName;
-//    }
-//
-//    public String getImgType() {
-//        return imgType;
-//    }
-//
-//    public void setImgType(String imgType) {
-//        this.imgType = imgType;
-//    }
-//
-//    public String getImgFilePath() {
-//        return imgFilePath;
-//    }
-//
-//    public void setImgFilePath(String imgFilePath) {
-//        this.imgFilePath = imgFilePath;
-//    }
 }

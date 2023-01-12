@@ -41,12 +41,9 @@ public class FileService {
 //        String destFileName = UUID.randomUUID().toString().concat(this.getExtension(fileName));     // to set random string for destination file name
 //        String destFilePath = "C:\\Users\\User\\Desktop\\" + fileName;                                          // to set destination file path
 
-        System.out.println("recived : " + fileName);
-        ////////////////////////////////   Download   ////////////////////////////////////////////////////////////////////////
         Credentials credentials = GoogleCredentials.fromStream(
                 new FileInputStream("src/main/resources/repo-hmr-in-firebase-adminsdk-l9a71-2cd68c5af6.json"));
         Storage storage = StorageOptions.newBuilder().setCredentials(credentials).build().getService();
-//        Blob blob = storage.get(BlobId.of("repo-hmr-in.appspot.com", fileName));
         return storage.signUrl(BlobInfo.newBuilder("repo-hmr-in.appspot.com", fileName).build(),2, TimeUnit.DAYS);
     }
 
