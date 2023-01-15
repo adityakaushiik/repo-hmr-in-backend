@@ -16,6 +16,9 @@ import java.nio.file.Path;
 @SpringBootApplication
 @EnableConfigurationProperties({DataStaxAstraProperties.class})
 public class RepoHmrInApplication implements WebMvcConfigurer {
+//    @Autowired
+//    SaveSubjectsService saveSubjectsService;
+
     public static void main(String[] args) {
         SpringApplication.run(RepoHmrInApplication.class, args);
     }
@@ -32,8 +35,8 @@ public class RepoHmrInApplication implements WebMvcConfigurer {
     public DriverConfigLoaderBuilderCustomizer defaultProfile() {
         return builder -> builder.withString(DefaultDriverOption.METADATA_SCHEMA_REQUEST_TIMEOUT, "3 seconds").build();
     }
-}
 //    @PostConstruct
 //    public void start(){
 //        saveSubjectsService.sendSubjects();
 //    }
+}

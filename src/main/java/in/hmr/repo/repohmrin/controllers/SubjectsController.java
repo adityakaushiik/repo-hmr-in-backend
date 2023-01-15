@@ -10,10 +10,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/")
 public class SubjectsController {
     @Autowired
-    SubjectsRepository subjectsRepository;
+    private SubjectsRepository subjectsRepository;
 
-    @PostMapping("getSubjects")
-    @ResponseBody
+    @PostMapping("/getSubjects")
     public String[] subjects(@RequestBody GetSubjects params){
         System.out.println("got params"+params.getBranch()+params.getSemester());
 

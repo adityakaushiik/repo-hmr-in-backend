@@ -7,12 +7,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
 public interface BookRepository extends CassandraRepository<Book, String> {
     @Query(allowFiltering = true)
-    Slice<Book> findAllBookByBranchAndSemesterAndSubjectCode
-            (String branch, int semester, String subjectCode, Pageable pageable);
+    Slice<Book> findAllBookByBranchAndSemesterAndSubjectCodeAndIsTemp
+            (String branch, int semester, String subjectCode,boolean isTemp, Pageable pageable);
+    @Query(allowFiltering = true)
+    Slice<Book> findAllBookByIsTemp(boolean isTemp, Pageable pageable);
 }
 

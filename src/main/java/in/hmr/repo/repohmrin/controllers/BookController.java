@@ -18,8 +18,9 @@ public class BookController {
     @GetMapping("/file")
     public URL download(@RequestParam("name") String fileName) throws IOException {
         System.out.println("HIT -/download | File Name : {}"+fileName);
-//        String str = ;
-//        System.out.println(str);
         return fileService.download(fileName);
     }
+
+    //update
+    //deleteFile
 }

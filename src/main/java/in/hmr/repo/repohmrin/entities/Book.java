@@ -48,14 +48,12 @@ public class Book {
     @Column("pdf_path")                 //not needed anymore
     @CassandraType(type = CassandraType.Name.TEXT)
     private String pdfFilePath;
-
-//    @Column("is_temp")                                // implement these
-//    @CassandraType(type = Name.BOOLEAN)
-//    private boolean isTemp;
-
-//    @Column("is_deleted")
-//    @CassandraType(type = Name.BOOLEAN)
-//    private boolean isDeleted;
+    @Column("is_temp")                                // implement these
+    @CassandraType(type = Name.BOOLEAN)
+    private boolean isTemp;
+    @Column("is_deleted")
+    @CassandraType(type = Name.BOOLEAN)
+    private boolean isDeleted;
 
     public String getId() {
         return id;
@@ -151,5 +149,21 @@ public class Book {
 
     public void setPdfFilePath(String pdfFilePath) {
         this.pdfFilePath = pdfFilePath;
+    }
+
+    public boolean isTemp() {
+        return isTemp;
+    }
+
+    public void setTemp(boolean temp) {
+        isTemp = temp;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 }

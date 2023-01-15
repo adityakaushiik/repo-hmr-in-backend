@@ -6,7 +6,6 @@ import in.hmr.repo.repohmrin.userResponses.SearchParameters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.cassandra.core.query.CassandraPageRequest;
 import org.springframework.data.domain.Slice;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,12 +20,21 @@ public class SearchController {
     @PostMapping({"/search"})
     public List<Book> bookSearch(@RequestBody SearchParameters searchParameter){
         System.out.println("got api call "+searchParameter);
-        Slice<Book> booksSlice = bookRepository.findAllBookByBranchAndSemesterAndSubjectCode(
+        Slice<Book> booksSlice = bookRepository.findAllBookByBranchAndSemesterAndSubjectCodeAndIsTemp(
                 searchParameter.getBranch(),
                 searchParameter.getSemester(),
                 searchParameter.getSubjectCode(),
+                false,
                 CassandraPageRequest.of(0,100));
         List<Book> booksByQuery = booksSlice.getContent();
         return booksByQuery;
+    }
+
+    @GetMapping({"/admin/review"})
+    public List<Book> reviewBooks(){
+        System.out.println("Send Temp Books");
+        Slice<Book> booksSlice = bookRepository.findAllBookByIsTemp(true,
+                CassandraPageRequest.of(0,100));
+        return booksSlice.getContent();
     }
 }

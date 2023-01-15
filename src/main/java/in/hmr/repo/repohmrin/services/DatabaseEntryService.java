@@ -19,14 +19,10 @@ public class DatabaseEntryService {
     @Autowired
     private BookRepository bookRepository;
     @Autowired
-    FileService fileService;
+    private FileService fileService;
     private final Random random = new Random();
-//    private final String PDF_FOLDER_PATH = "D:/hmr-repo/pdf/";
 
     public void addEntry(RegistrationDetails details , MultipartFile file){
-
-//        String pdfFilePath = PDF_FOLDER_PATH + file.getOriginalFilename();
-//        file.transferTo(new File(pdfFilePath));
 
         String[] fileDetails = fileService.upload(file);
 
@@ -41,7 +37,6 @@ public class DatabaseEntryService {
         author.setName(details.getTeacherName());
         this.authorRepository.save(author);
 
-//        String bookId = bookUniqueId(details.getTitle());
         Book book = new Book();
         book.setId(fileDetails[0]);
         book.setTitle(details.getTitle());
@@ -55,9 +50,11 @@ public class DatabaseEntryService {
         book.setSubjectCode(details.getSubjectCode());
         book.setPdfOriginalName(file.getOriginalFilename());
         book.setPdfFilePath(fileDetails[1]);
+        book.setTemp(true);
+        book.setDeleted(false);
         this.bookRepository.save(book);
 
-        System.out.println("files uploaded "+ file.getOriginalFilename());
+        System.out.println("files uploaded : "+ file.getOriginalFilename());
     }
 
     private String teacherUniqueId(String name) {
