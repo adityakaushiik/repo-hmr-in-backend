@@ -20,11 +20,11 @@ public class SearchController {
     @PostMapping({"/search"})
     public List<Book> bookSearch(@RequestBody SearchParameters searchParameter){
         System.out.println("got api call "+searchParameter);
-        Slice<Book> booksSlice = bookRepository.findAllBookByBranchAndSemesterAndSubjectCodeAndIsTemp(
+        Slice<Book> booksSlice = bookRepository.findAllBookByBranchAndSemesterAndSubjectCodeAndIsTempAndIsDeleted(
                 searchParameter.getBranch(),
                 searchParameter.getSemester(),
                 searchParameter.getSubjectCode(),
-                false,
+                false,false,
                 CassandraPageRequest.of(0,100));
         List<Book> booksByQuery = booksSlice.getContent();
         return booksByQuery;

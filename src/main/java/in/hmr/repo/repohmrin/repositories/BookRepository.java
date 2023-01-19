@@ -10,9 +10,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BookRepository extends CassandraRepository<Book, String> {
     @Query(allowFiltering = true)
-    Slice<Book> findAllBookByBranchAndSemesterAndSubjectCodeAndIsTemp
-            (String branch, int semester, String subjectCode,boolean isTemp, Pageable pageable);
+    Slice<Book> findAllBookByBranchAndSemesterAndSubjectCodeAndIsTempAndIsDeleted
+            (String branch, int semester, String subjectCode, boolean isTemp , boolean isDeleted, Pageable pageable);
     @Query(allowFiltering = true)
     Slice<Book> findAllBookByIsTemp(boolean isTemp, Pageable pageable);
+
+    Book findBookById(String id);
 }
 

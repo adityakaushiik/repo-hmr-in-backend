@@ -1,6 +1,7 @@
 package in.hmr.repo.repohmrin.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.api.client.json.Json;
 import in.hmr.repo.repohmrin.services.DatabaseEntryService;
 import in.hmr.repo.repohmrin.userResponses.RegistrationDetails;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class RegistrationController {
     private DatabaseEntryService databaseEntry;
 
     @PostMapping("/register")
-    public ResponseEntity<String> uploadSingleFile(@RequestParam("file") MultipartFile file,
+    public RegistrationDetails uploadSingleFile(@RequestParam("file") MultipartFile file,
                                                    @RequestParam("data") String details) throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -27,6 +28,6 @@ public class RegistrationController {
 
         databaseEntry.addEntry(registrationDetails, file);
 
-        return new ResponseEntity<>("File Uploaded Successfully", HttpStatus.OK);
+        return registrationDetails;
     }
 }
