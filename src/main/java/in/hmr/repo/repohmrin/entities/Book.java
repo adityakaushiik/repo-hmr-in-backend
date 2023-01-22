@@ -1,14 +1,14 @@
 package in.hmr.repo.repohmrin.entities;
 
-import java.time.LocalDate;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
 import org.springframework.data.cassandra.core.mapping.CassandraType;
+import org.springframework.data.cassandra.core.mapping.CassandraType.Name;
 import org.springframework.data.cassandra.core.mapping.Column;
 import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn;
 import org.springframework.data.cassandra.core.mapping.Table;
-import org.springframework.data.cassandra.core.mapping.CassandraType.Name;
+
+import java.time.LocalDate;
 
 @Table("book_by_id")
 public class Book {
@@ -45,15 +45,34 @@ public class Book {
     @Column("pdf_name")
     @CassandraType(type = CassandraType.Name.TEXT)
     private String pdfOriginalName;
-    @Column("pdf_path")                 //not needed anymore
+    @Column("pdf_path")
     @CassandraType(type = CassandraType.Name.TEXT)
     private String pdfFilePath;
-    @Column("is_temp")                                // implement these
+    @Column("is_temp")
     @CassandraType(type = Name.BOOLEAN)
     private boolean isTemp;
     @Column("is_deleted")
     @CassandraType(type = Name.BOOLEAN)
     private boolean isDeleted;
+    @Column("book_views")
+    @CassandraType(type = Name.INT)
+    private int views;
+
+    public int getViews() {
+        return views;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
+    }
+
+    public LocalDate getPublishedDate() {
+        return publishedDate;
+    }
+
+    public void setPublishedDate(LocalDate publishedDate) {
+        this.publishedDate = publishedDate;
+    }
 
     public String getId() {
         return id;
@@ -79,13 +98,6 @@ public class Book {
         this.description = description;
     }
 
-    public LocalDate getPublishedDate() {
-        return publishedDate;
-    }
-
-    public void setPublishedDate(LocalDate publishedDate) {
-        this.publishedDate = publishedDate;
-    }
 
     public String getAuthorNames() {
         return authorNames;
@@ -165,5 +177,26 @@ public class Book {
 
     public void setDeleted(boolean deleted) {
         isDeleted = deleted;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", publishedDate=" + publishedDate +
+                ", authorNames='" + authorNames + '\'' +
+                ", authorID='" + authorID + '\'' +
+                ", semester=" + semester +
+                ", branch='" + branch + '\'' +
+                ", type='" + type + '\'' +
+                ", subjectCode='" + subjectCode + '\'' +
+                ", pdfOriginalName='" + pdfOriginalName + '\'' +
+                ", pdfFilePath='" + pdfFilePath + '\'' +
+                ", isTemp=" + isTemp +
+                ", isDeleted=" + isDeleted +
+                ", views=" + views +
+                '}';
     }
 }

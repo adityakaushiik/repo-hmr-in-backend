@@ -8,6 +8,10 @@ import org.springframework.data.cassandra.core.query.CassandraPageRequest;
 import org.springframework.data.domain.Slice;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -30,6 +34,27 @@ public class SearchController {
         return booksByQuery;
     }
 
+    @GetMapping({"/searchLatest"})
+    public List<Book> latestBookSearch(){
+
+        Slice<Book> booksSlice = bookRepository.findTopByPublishedDateAndIsTempAndIsDeleted(LocalDate.now(),
+                false,
+                false,
+                CassandraPageRequest.of(0,3));
+        List<Book> booksByQuery = booksSlice.getContent();
+        return booksByQuery;
+    }
+    @GetMapping({"/mostViewed"})
+    public List<Book> viewsBookSearch(){
+        Slice<Book> booksSlice = bookRepository.findAllByViewsAndIsTempAndIsDeleted(3,
+                false,
+                false,
+                CassandraPageRequest.of(0,3));
+        List<Book> booksByQuery = booksSlice.getContent();
+        return booksByQuery;
+    }
+
+
     @GetMapping({"/admin/review"})
     public List<Book> reviewBooks(){
         System.out.println("Send Temp Books");
@@ -37,4 +62,5 @@ public class SearchController {
                 CassandraPageRequest.of(0,100));
         return booksSlice.getContent();
     }
+
 }

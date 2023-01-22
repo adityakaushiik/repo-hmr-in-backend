@@ -4,6 +4,7 @@ import in.hmr.repo.repohmrin.entities.Book;
 import in.hmr.repo.repohmrin.repositories.BookRepository;
 import in.hmr.repo.repohmrin.services.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -20,29 +21,36 @@ public class BookController {
 
     @GetMapping("/file")
     public URL download(@RequestParam("name") String fileName) throws IOException {
-        System.out.println("HIT -/download | File Name : {}" + fileName);
+//        System.out.println("HIT -/download | File Name : {}" + fileName);
         return fileService.download(fileName);
     }
-    //update
+
     @PutMapping("/update")
-    public String updateBook(@RequestParam("id") String id ,
-                             @RequestParam("action") String action) {
+    public Book updateBook(@RequestBody Book book){
+        Book thisBook = bookRepository.findBookById(book.getId());
+        System.out.println(book);
+        if (thisBook != null) {
+            thisBook=book;
+            bookRepository.save(thisBook);
+            System.out.println("allDone");
+            return book;
+        }
+        System.out.println("notDone");
+        return new Book();
+    }
+
+    @GetMapping("/updateViews")
+    public Book updateBook(@RequestParam("id") String id){
+        System.out.println("incrementing views for : "+id);
         Book thisBook = bookRepository.findBookById(id);
 
         if (thisBook != null) {
-            switch (action){
-                case "approve" : thisBook.setTemp(false);
-                                    break;
-                case "delete" : thisBook.setDeleted(true);
-                                thisBook.setTemp(false);
-                                    break;
-                default: return "book not Found";
-            }
+            thisBook.setViews(thisBook.getViews()+1);
             bookRepository.save(thisBook);
-            System.out.println("allDone");
-            return "Done";
+            return thisBook;
         }
+
         System.out.println("notDone");
-        return "notDone";
+        return new Book();
     }
 }

@@ -1,4 +1,4 @@
-package in.hmr.repo.repohmrin.connection;
+package in.hmr.repo.repohmrin.controllers.connection;
 
 import java.io.File;
 

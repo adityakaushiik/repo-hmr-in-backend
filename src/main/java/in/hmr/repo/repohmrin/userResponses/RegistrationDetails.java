@@ -8,7 +8,6 @@ public class RegistrationDetails {
     private String subjectCode;
     private String description;
     private String type;
-//    private MultipartFile pdf;
 
     public String getTeacherName() {
         return teacherName;
@@ -51,14 +50,6 @@ public class RegistrationDetails {
         this.description = description;
     }
 
-//    public MultipartFile getPdf() {
-//        return pdf;
-//    }
-//
-//    public void setPdf(MultipartFile pdf) {
-//        this.pdf = pdf;
-//    }
-
     public String getSubjectCode() {
         return subjectCode;
     }
@@ -75,5 +66,16 @@ public class RegistrationDetails {
         this.type = type;
     }
 
-
+    @Override
+    public String toString() {
+        return "RegistrationDetails{" +
+                "teacherName='" + teacherName + '\'' +
+                ", title='" + title + '\'' +
+                ", branch='" + branch + '\'' +
+                ", semester='" + semester + '\'' +
+                ", subjectCode='" + subjectCode + '\'' +
+                ", description='" + description + '\'' +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }

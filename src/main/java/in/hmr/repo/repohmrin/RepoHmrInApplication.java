@@ -2,7 +2,9 @@ package in.hmr.repo.repohmrin;
 
 import com.datastax.oss.driver.api.core.CqlSessionBuilder;
 import com.datastax.oss.driver.api.core.config.DefaultDriverOption;
-import in.hmr.repo.repohmrin.connection.DataStaxAstraProperties;
+import in.hmr.repo.repohmrin.controllers.connection.DataStaxAstraProperties;
+import in.hmr.repo.repohmrin.services.SaveSubjectsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.cassandra.CqlSessionBuilderCustomizer;
@@ -11,13 +13,14 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import javax.annotation.PostConstruct;
 import java.nio.file.Path;
 
 @SpringBootApplication
 @EnableConfigurationProperties({DataStaxAstraProperties.class})
 public class RepoHmrInApplication implements WebMvcConfigurer {
-//    @Autowired
-//    SaveSubjectsService saveSubjectsService;
+    @Autowired
+    SaveSubjectsService saveSubjectsService;
 
     public static void main(String[] args) {
         SpringApplication.run(RepoHmrInApplication.class, args);

@@ -52,6 +52,7 @@ public class DatabaseEntryService {
         book.setPdfFilePath(fileDetails[1]);
         book.setTemp(true);
         book.setDeleted(false);
+        book.setViews(0);
         this.bookRepository.save(book);
 
         System.out.println("files uploaded : "+ file.getOriginalFilename());
